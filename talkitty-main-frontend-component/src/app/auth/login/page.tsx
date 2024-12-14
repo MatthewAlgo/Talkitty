@@ -1,7 +1,5 @@
 import { signIn } from 'next-auth/react';
 import { useState } from 'react';
-import Image from 'next/image';
-import ButtonWithIcon from '../components/ui/buttons/button-with-icon';
 
 export default function Login() {
   const [loading, setLoading] = useState(false);
@@ -28,9 +26,6 @@ export default function Login() {
           {loading ? 'Loading...' : 'Login with GitHub'}
         </button>
       </main>
-        <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-            <ButtonWithIcon icon={<Image src="/images/github-mark-white.png" alt="GitHub Logo" width={16} height={16}/>} children={"Button"}  />
-        </footer>
     </div>
     );
 }

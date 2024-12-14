@@ -13,9 +13,12 @@ export default function ButtonWithIcon({
     ...props
 }: ButtonWithIconProps) {
     return (
-        <Button color='primary' 
-                className='flex items-center gap-2 border-4 border-indigo-250/75' {...props} style={
-            {
+        <Button
+            color="primary"
+            ripple={true} // Enable ripple effect
+            className="flex items-center gap-2 border-4 border-indigo-250/75"
+            {...props}
+            style={{
                 backgroundColor: 'var(--geist-cyan)',
                 color: 'var(--geist-foreground)',
                 fontFamily: 'var(--font-geist-sans)',
@@ -25,27 +28,31 @@ export default function ButtonWithIcon({
                 borderRadius: '0.5rem',
                 cursor: 'pointer',
                 transition: 'background-color 0.2s, color 0.2s',
-            }
-        }>
-            <div style={{ marginRight: '0.5rem',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-             }}>
-                <div style={{ display: 'flex' }}></div>
-                    {Array.isArray(icon) ? icon.map((item, index) => (
-                        <div key={index} style={{ display: 'flex' }}>
-                            {item}
-                        </div>
-                    )) : icon}
-                </div>
-                <div style={{ display: 'flex' }}>
-                    {Array.isArray(children) ? children.map((child, index) => (
-                        <div key={index} style={{ display: 'flex' }}>
-                            {child}
-                        </div>
-                    )) : children}
-                </div>
+                overflow: 'hidden',
+                position: 'relative',
+            }}
+        >
+            <div
+                style={{
+                    marginRight: '0.5rem',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                }}
+            >
+                {Array.isArray(icon)
+                    ? icon.map((item, index) => (
+                          <div key={index} style={{ display: 'flex' }}>
+                              {item}
+                          </div>
+                      ))
+                    : (
+                          <div style={{ display: 'flex' }}>
+                              {icon}
+                          </div>
+                      )}
+            </div>
+            {children}
         </Button>
     );
 }

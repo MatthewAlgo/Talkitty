@@ -4,18 +4,19 @@ import { ReactNode } from 'react';
 interface ButtonWithIconProps {
     icon: ReactNode;
     children?: ReactNode;
+    onClick?: React.MouseEventHandler<HTMLButtonElement>;
     [key: string]: unknown;
 }
 
 export default function ButtonWithIcon({
     icon,
+    onClick,
     children,
     ...props
 }: ButtonWithIconProps) {
     return (
         <Button
             color="primary"
-            ripple={true} // Enable ripple effect
             className="flex items-center gap-2 border-4 border-indigo-250/75"
             {...props}
             style={{
@@ -31,6 +32,7 @@ export default function ButtonWithIcon({
                 overflow: 'hidden',
                 position: 'relative',
             }}
+            onClick={onClick}
         >
             <div
                 style={{

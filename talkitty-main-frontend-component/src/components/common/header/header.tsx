@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from '@nextui-org/react';
-import { FiLogIn, FiLogOut } from 'react-icons/fi';
+import { FiLogIn, FiLogOut, FiHome } from 'react-icons/fi';
 import { useAuth } from '../../../context/authcontext'; // Adjust the path as necessary
 
 const Header: React.FC = () => {
@@ -10,10 +10,16 @@ const Header: React.FC = () => {
         if (isAuthenticated) {
             logout();
         } else {
-            // For demonstration purposes, we use a dummy token
-            login('dummy-token');
+            // Navigate to the /auth/login page
+            window.location.href = '/auth/login';
         }
     };
+
+    // Determine if the current page is the login or register page
+    const isAuthPage = [
+        '/auth/login',
+        '/auth/register'
+    ].includes(window.location.pathname);
 
     return (
         <header className="bg-gray-800 bg-opacity-75 text-white rounded-lg p-4 m-4 shadow-lg">
@@ -28,14 +34,25 @@ const Header: React.FC = () => {
                     <span className="text-indigo-300">t</span>
                     <span className="text-yellow-300">y</span>
                 </h1>
-                <Button
-                    color="primary"
-                    onClick={handleAuthAction}
-                    className="ml-4 flex items-center"
-                >
-                    {isAuthenticated ? <FiLogOut className="mr-2" /> : <FiLogIn className="mr-2" />}
-                    {isAuthenticated ? 'Logout' : 'Login'}
-                </Button>
+                {isAuthPage ? (
+                    <Button
+                        color="primary"
+                        onClick={() => (window.location.href = '/')}
+                        className="ml-4 flex items-center"
+                    >
+                        <FiHome className="mr-2" />
+                        Home
+                    </Button>
+                ) : (
+                    <Button
+                        color="primary"
+                        onClick={handleAuthAction}
+                        className="ml-4 flex items-center"
+                    >
+                        {isAuthenticated ? <FiLogOut className="mr-2" /> : <FiLogIn className="mr-2" />}
+                        {isAuthenticated ? 'Logout' : 'Login'}
+                    </Button>
+                )}
             </div>
         </header>
     );

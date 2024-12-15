@@ -4,6 +4,7 @@ import InputFieldMaterial from '../cards/input-field-material';
 import ButtonWithIcon from '../buttons/button-with-icon';
 import Image from "next/image";
 import Link from "next/link";
+import { FaSignInAlt } from 'react-icons/fa';
 
 export default function RegisterForm() {
     const [email, setEmail] = useState('');
@@ -44,13 +45,7 @@ export default function RegisterForm() {
                     <div className="flex gap-6 flex-wrap items-center justify-center">
                         <ButtonWithIcon
                             icon={
-                                <Image
-                                    src="/images/github-mark-white.png"
-                                    alt="GitHub Logo"
-                                    width={16}
-                                    height={16}
-                                />
-                            }
+                                <FaSignInAlt size={16} />}
                             onClick={handleSubmit}
                         >
                             Register

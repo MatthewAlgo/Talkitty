@@ -13,45 +13,45 @@ from .views import (
 
 urlpatterns = [
     # Authentication Endpoints
-    path('login/',
+    path('auth/login/',
         CustomTokenObtainPairView.as_view(),
         name='token_obtain_pair'
     ),
-    path('login/refresh/',
+    path('auth/login/refresh/',
         TokenRefreshView.as_view(),
         name='token_refresh'
     ),
-    path('token/verify/',
+    path('auth/token/verify/',
         TokenVerifyView.as_view(),
         name='token_verify'
     ),
-    path('register/',
+    path('auth/register/',
         RegisterView.as_view(),
         name='register'
     ),
-    path('logout/',
+    path('auth/logout/',
         LogoutView.as_view(),
         name='logout'
     ),
 
     # Password Management Endpoints
-    path('password/reset/',
+    path('auth/password/reset/',
         PasswordResetRequestView.as_view(),
         name='password_reset_request'
     ),
-    path('password/reset/confirm/',
+    path('auth/password/reset/confirm/',
         PasswordResetConfirmView.as_view(),
         name='password_reset_confirm'
     ),
 
     # User Profile Endpoints
-    path('profile/',
+    path('auth/profile/',
         UserProfileView.as_view(),
         name='user_profile'
     ),
 
     # Email Verification Endpoint
-    path('verify-email/',
+    path('auth/verify-email/',
         EmailVerificationView.as_view(),
         name='email_verification'
     )

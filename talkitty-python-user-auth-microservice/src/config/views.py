@@ -16,7 +16,7 @@ from .serializers import (
 
 class CustomTokenObtainPairView(TokenObtainPairView):
     """
-    **POST** /login/
+    **POST** auth/login/
 
     **Expected Fields**:
     - `email`: (string) The email of the user.
@@ -48,7 +48,7 @@ class CustomTokenObtainPairView(TokenObtainPairView):
 
 class RegisterView(APIView):
     """
-    **POST** /register/
+    **POST** auth/register/
 
     **Expected Fields**:
     - `email`: (string) The email of the user.
@@ -83,7 +83,7 @@ class RegisterView(APIView):
 
 class LogoutView(APIView):
     """
-    **POST** /logout/
+    **POST** auth/logout/
 
     **Expected Fields**:
     - `refresh_token`: (string) The refresh token to invalidate.
@@ -107,7 +107,7 @@ class LogoutView(APIView):
 
 class PasswordResetRequestView(APIView):
     """
-    **POST** /password/reset/
+    **POST** auth/password/reset/
 
     **Expected Fields**:
     - `email`: (string) The email of the user who wants to reset their password.
@@ -129,7 +129,7 @@ class PasswordResetRequestView(APIView):
 
 class PasswordResetConfirmView(APIView):
     """
-    **POST** /password/reset/confirm/
+    **POST** auth/password/reset/confirm/
 
     **Expected Fields**:
     - `token`: (string) The token used to verify the password reset request.
@@ -151,8 +151,8 @@ class PasswordResetConfirmView(APIView):
 
 class UserProfileView(APIView):
     """
-    **GET** /profile/
-    **PUT** /profile/
+    **GET** auth/profile/
+    **PUT** auth/profile/
 
     **Expected Fields (PUT)**:
     - `name`: (string) The user's updated name.
@@ -188,7 +188,7 @@ class UserProfileView(APIView):
 
 class EmailVerificationView(APIView):
     """
-    **POST** /verify-email/
+    **POST** auth/verify-email/
 
     **Expected Fields**:
     - `token`: (string) The token used to verify the user's email.
